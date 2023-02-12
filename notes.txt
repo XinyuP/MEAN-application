@@ -1,0 +1,169 @@
+Angular is a framework which allows you
+to create reactive single page applications.
+
+MAEN Stack
+
+client 
+Angular(JS) 
+-- presentation/UI
+-- Single-Page Application
+This single page application can be rendered by our Node Backend.
+So we could have one route, which essentially returns this single HTML page,
+but it can also be totally decoupled from that and be served from a totally different host,
+some static hosst like AWS S3, for example.
+
+
+
+server 
+Node 
+Express
+MongoDB -- persistent data storage
+-- business logic especially the logic that should not be exposed to the client due to security reasons
+-- authentication logic
+
+
+connect two pieces:
+we we exchange requests and responses
+and these requests and responses are sent behind the scenes, so-called AJAX requests.
+They afford the type of data we exchange is not HTML, because we never want HTML code.
+We do all that presentation and re-rendering logic with Angular.
+Instead, what we get is so-called JSON data.
+
+
+
+/////////// AngularJS ///////////////
+AngularJS is a JavaScript-based front-end web framework 
+based on bidirectional UI data binding and is used to design Single Page Applications.
+They load faster and offer a great user experience.
+These applications only load a single HTML page, and only part of the page gets updated with every click of the mouse.
+
+This is different from multi-page applications as they load a new page with every click.
+
+
+In a Single Page Application (SPA), all of your application's functions exist
+in a single HTML page. As users access your application's features, the browser
+needs to render only the parts that matter to the user, instead of loading a new page. 
+This pattern can significantly improve your application's user experience.
+
+update UI
+handle user input
+communicate with backend 
+no need to reload the page 
+
+
+
+
+//////////// node ///////////////////
+node.js for backend:
+listen to request and send response
+execute server-side logic -- auth, db, file
+
+node,js is an alternative to PHP, Ruby on Rails, Java 
+-- rarely used standalone, typically use a framework along
+with it and that framework you typically use is express.
+
+
+
+
+////////////// Express /////////////////
+Express is a node JS framework,
+it still uses node js, the same language.
+but it adds a lot of utility features,
+it offers additional functionalities or in general
+
+Express JS is middleware-based
+It basically funnels incoming requests through a chain
+of middlewares of steps where we can do something
+with the request, read some data from it, manipulate it
+check if the user is authenticated or basically sent back a response immediately.
+ 
+it includes routing which means we could render views(HTML pages) with it.
+
+we can handle different requests to different endpoint
+which will be important for connecting Angular
+to the backend because if we wanna fetch a list of posts
+we wanna send some requests to "/posts".
+So our domain/posts, if we want to create a new post
+we want to send a different request to our "domain/post",
+express JS allows us to implement this routing logic
+so that different requests to different URLs are handled correctly.
+
+
+
+//////////// MongoDB //////////////
+noSQL database
+it stores so-called documents in so-called collections.
+
+enforces no schema
+
+you can have different documents with different pieces of information
+in the same table or collection as it is called here.
+
+And it also doesn't really work with relations.
+
+we can't relate different documents with each other
+but in general, it way less strict and flexible regarding than SQL db 
+
+
+noSQL --> store multiple unstructured documents
+though you can get some structure into it
+
+
+easy connect to node 
+but don't connect to angular 
+
+
+
+
+//////////////////////////
+single page application
+
+
+immediately change the page
+instant re-rendering 
+instant user feedback
+highly engaging UI 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
