@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post.model';
 import { Subject } from 'rxjs';
+import { response } from 'express';
 
 @Injectable({ providedIn: 'root' })
 export class PostsService {
@@ -23,9 +24,6 @@ export class PostsService {
         this.postsUpdated.next([...this.posts]);
         // inform about this update
       });
-
-
-
 
     // I wanna reach out to backend, fetch the posts, store them in posts variable here
     // and then fire my update listener to inform everyone interested in my app
@@ -50,8 +48,13 @@ export class PostsService {
       title: title,
       content: content,
     };
-    this.posts.push(post);
-    this.postsUpdated.next([...this.posts]);
+    this.http
+      .post<{ message: string }>('http://localhost:3000/api/posts', post)
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+        this.posts.push(post);
+        this.postsUpdated.next([...this.posts]);
+      });
   }
 }
 
