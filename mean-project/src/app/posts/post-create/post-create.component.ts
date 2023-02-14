@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Post } from '../post.model';
-
 
 // decorator
 @Component({
@@ -15,12 +15,14 @@ export class PostCreateComponent {
   // this decorator turns this into an event to which we can listen to
   // from the outside(in the parent componnet)
 
-
-  onAddPost() {
+  onAddPost(form: NgForm) {
     // this.newPost = this.enteredContent;
+    if (form.invalid) {
+      return;
+    }
     const post: Post = {
-      title: this.enteredTitle,
-      content: this.enteredContent,
+      title: form.value.title,
+      content: form.value.content,
     };
     this.postCreated.emit(post);
   }

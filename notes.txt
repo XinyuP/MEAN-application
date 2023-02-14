@@ -171,7 +171,16 @@ which we can read and write
 <textarea rows="6" [value]="newPost" #postInput></textarea>
 
 -------------------------------------------------
-two way binding feature 
+ ** two way binding feature **
+
+
+Two-way binding gives components in your application a way to share data. 
+Use two-way binding to listen for events and update values simultaneously
+ between parent and child components.
+
+Angular's two-way binding syntax is a combination of square brackets and parentheses, [()]. 
+The [()] syntax combines the brackets of property binding, [],
+ with the parentheses of event binding, ()
 
 
 <textarea rows="6" [(ngModel)]></textarea>
@@ -198,7 +207,10 @@ However, since both *ngFor and *ngIf are structural directives
 
 -------------------------------------------------
 
+<form (submit)="onAddPost()" #postForm="ngForm">
 
+#postForm="ngForm" 
+give us access to the form object that angular created for us
 
 
 
