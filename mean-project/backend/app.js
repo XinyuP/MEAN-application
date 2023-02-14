@@ -10,7 +10,7 @@ const app = express();
 mongoose
   .connect(
     "mongodb+srv://blaire:vP32L7b5EXgW4aFv@cluster0.an7f9qe.mongodb.net/node-angular?retryWrites=true&w=majority"
-  )  // mongoose auto make create the node-angular databse the first time we write to it
+  ) // mongoose auto make create the node-angular databse the first time we write to it
   .then(() => {
     console.log("Connected to database!");
   })
@@ -60,33 +60,16 @@ app.post("/api/posts", (req, res, next) => {
 
 app.get("/api/posts", (req, res, next) => {
   // adding api is optional, just to make it clear
-  const posts = [
-    {
-      id: "213221321",
-      title: "wedewdwe",
-      content: "dwdewdwds",
-    },
-    {
-      id: "23231",
-      title: "wedewdwe",
-      content: "dwdewdwds",
-    },
-    {
-      id: "323213",
-      title: "wedewdwe",
-      content: "dwdewdwds",
-    },
-    {
-      id: "21321",
-      title: "wedewdwe",
-      content: "dwdewdwds",
-    },
-  ];
-  res.status(200).json({
-    message: "Posts fetched successfully!",
-    posts: posts,
-  });
-  next();
+  Post.find() // find() simply returns all entries
+    .then((documents) => {
+      // then() holds our results
+      res.status(200).json({
+        message: "Posts fetched successfully!",
+        posts: documents,
+      });
+    });
+
+  // next();
 });
 
 // express app is just a big chain of middlewares we apply to the incoming requests
