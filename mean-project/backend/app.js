@@ -1,10 +1,22 @@
 // hold the express app -- still a node js server side app -- taking adantage of express features
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const Post = require("./models/post");
 
 const app = express();
+
+mongoose
+  .connect(
+    "mongodb+srv://blaire:vP32L7b5EXgW4aFv@cluster0.an7f9qe.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch((e) => {
+    console.log("Connection to database failed!");
+  });
 
 app.use(bodyParser.json()); // return a valid express middleware for parsing json data
 app.use(bodyParser.urlencoded({ extended: false }));
