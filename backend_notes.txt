@@ -1,0 +1,185 @@
+Node: 
+JS runtime that runs on the server
+
+You can execute JS code with some extra features and missing features
+compared to the browser JS version 
+
+ng serve
+gives us a development server
+
+
+REST API is a stateluss backend
+
+It doesn't care about which client connected to it
+
+All REST API does is:
+it exposes a couple of different URLs, so called paths,
+to which you can send request, 
+and depending on which path you send a request, something different will happen
+
+We got our RESTful server,
+
+and then we got different paths
+
+/users, /posts, /products.
+
+So you could send a request to yourdomain/users.
+You could send a request to yourdomain.com/posts.
+You could send a request to yourdomain.com/products.
+And depending on to which path you sent the request,
+something different will happen
+and you will get a different response.
+
+But this of course makes your API fully transparent and predictable.
+
+And you can do different things with it.
+We create the API on our own,
+so we got full control what we wanna support, what we wanna offer.
+
+
+
+
+HTTP verb used for request: GET, POST, DELETE, PATCH, PUT.
+
+
+And for the different paths,
+you might be supporting different verbs.
+
+You don't have to support all verbs for every path.
+For some paths, you only wanna allow GET requests.
+For some paths, you maybe only wanna allow POST requests.
+And with this you can send such a AJAX request through Angular's HTTP client.
+
+For example, send a POST request to yourdomain.com/users,
+and this would probably be adding a new user to your backend database.
+
+But what exactly happens, is controlled with your service side code
+that runs for this path.
+
+
+In the end, you will get back a response
+which you can then use in your client side application.
+
+
+
+we communicate with JSON data,
+not with HTML data, not with XML data.
+JSON is a data format which looks very much like JavaScript Objects,
+understandable and machine readable
+and which allows us to exchange data.
+
+
+
+
+
+
+For Node.js 
+you create a server with Node.js too
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
