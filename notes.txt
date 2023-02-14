@@ -216,10 +216,21 @@ give us access to the form object that angular created for us
 
 -------------------------------------------------
 
+A service is a class which you
+add to your Angular application, which you let inject
+by Angular into components.
+
+I'll come back to what inject means
+
+and which is able to centralize some tasks and provide
+easy access to data from within different components
+without property and event binding, 
+
 
 
 -------------------------------------------------
 
+dependency injection
 
 
 -------------------------------------------------
