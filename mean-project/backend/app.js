@@ -47,15 +47,17 @@ app.post("/api/posts", (req, res, next) => {
     title: req.body.title,
     content: req.body.content,
   });
-  console.log(post);
+  //console.log(post);
 
-  post.save(); // create a new post entry or document (the name of the collection will be the plural form of the model name 'Post' -> posts)
+  post.save().then((result) => {
+    // console.log(result);
+    res.status(201).json({
+      message: "Post added successfully",
+      postId: result._id,
+    });
+  }); // create a new post entry or document (the name of the collection will be the plural form of the model name 'Post' -> posts)
   // save(): mongoose behind the scene automatically creates the right query for our database to insert a new entry
   // with that data and the automatically generated id into the database
-
-  res.status(201).json({
-    message: "Post added successfully",
-  });
 });
 
 app.get("/api/posts", (req, res, next) => {
@@ -73,12 +75,11 @@ app.get("/api/posts", (req, res, next) => {
 });
 
 app.delete("/api/posts/:id", (req, res, next) => {
-  Post.deleteOne({ _id: req.params.id }).then(result => {
-    console.log(result)
+  Post.deleteOne({ _id: req.params.id }).then((result) => {
+    console.log(result);
     res.status(200).json({ message: "Post deleted!" });
   });
   // console.log(req.params.id);
-
 });
 
 // express app is just a big chain of middlewares we apply to the incoming requests
