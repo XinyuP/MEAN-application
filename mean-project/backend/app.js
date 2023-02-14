@@ -1,8 +1,10 @@
 // hold the express app -- still a node js server side app -- taking adantage of express features
-
 const express = require("express");
-
+const bodyParser = require("body-parser");
 const app = express();
+
+app.use(bodyParser.json()); // return a valid express middleware for parsing json data
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); /// allow which domain are able to access our resources
@@ -23,6 +25,15 @@ app.use((req, res, next) => {
 
   next(); // because request should be able to continue to the next middleware
 }); // no path or filter added because I wanna do this for all incoming requests
+
+// is only triggered for incoming post requests
+app.post("/api/posts", (req, res, next) => {
+  const post = req.body;
+  console.log(post);
+  res.status(201).json({
+    message: "Post added successfully",
+  });
+});
 
 app.use("/api/posts", (req, res, next) => {
   // adding api is optional, just to make it clear

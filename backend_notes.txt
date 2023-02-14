@@ -101,6 +101,29 @@ you create a server with Node.js too
 
 
 
+-----------------------------------------------------------------
+
+body-parser will parse incoming request bodies, extract the request data(a stream of data),
+and convert to a data object that we can use, then readds it on a special property to the request object
+
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+-----------------------------------------------------------------
+
+
+
+
+
+
+
+-----------------------------------------------------------------
 
 
 
@@ -109,26 +132,7 @@ you create a server with Node.js too
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-----------------------------------------------------------------
 
 
 
