@@ -1,6 +1,9 @@
 // hold the express app -- still a node js server side app -- taking adantage of express features
 const express = require("express");
 const bodyParser = require("body-parser");
+
+const Post = require("./models/post");
+
 const app = express();
 
 app.use(bodyParser.json()); // return a valid express middleware for parsing json data
@@ -28,7 +31,10 @@ app.use((req, res, next) => {
 
 // is only triggered for incoming post requests
 app.post("/api/posts", (req, res, next) => {
-  const post = req.body;
+  const post = new Post({
+    title: req.body.title,
+    content: req.body.content,
+  });
   console.log(post);
   res.status(201).json({
     message: "Post added successfully",
