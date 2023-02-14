@@ -72,6 +72,15 @@ app.get("/api/posts", (req, res, next) => {
   // next();
 });
 
+app.delete("/api/posts/:id", (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result)
+    res.status(200).json({ message: "Post deleted!" });
+  });
+  // console.log(req.params.id);
+
+});
+
 // express app is just a big chain of middlewares we apply to the incoming requests
 // like a funnel through which we send that express and every part of that funnel or in
 // that funnel, we have different parts, and every part can do something with request.

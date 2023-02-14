@@ -29,7 +29,7 @@ export class PostsService {
           });
         })
       )
-      .subscribe(transformedPosts => {
+      .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         // no need to use copy --> it comes from the server, we won't accidently change it on the server,
         // there is no such connection, it was part of http response
@@ -67,6 +67,14 @@ export class PostsService {
         console.log(responseData.message);
         this.posts.push(post);
         this.postsUpdated.next([...this.posts]);
+      });
+  }
+
+  deletePost(postId: string) {
+    this.http
+      .delete('http://localhost:3000/api/posts/' + postId)
+      .subscribe(() => {
+        console.log('Deleted!');
       });
   }
 }
