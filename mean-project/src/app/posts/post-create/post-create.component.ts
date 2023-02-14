@@ -1,5 +1,6 @@
-import { keyframes } from '@angular/animations';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Post } from '../post.model';
+
 
 // decorator
 @Component({
@@ -10,14 +11,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class PostCreateComponent {
   enteredTitle = '';
   enteredContent = '';
-  @Output() postCreated = new EventEmitter();
+  @Output() postCreated = new EventEmitter<Post>(); // EventEmitter is a so-called generic type
   // this decorator turns this into an event to which we can listen to
   // from the outside(in the parent componnet)
 
 
   onAddPost() {
     // this.newPost = this.enteredContent;
-    const post = {
+    const post: Post = {
       title: this.enteredTitle,
       content: this.enteredContent,
     };

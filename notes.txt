@@ -165,8 +165,6 @@ a couple of properties, so variables belonging to the Objects
 which we can read and write
 
 
--------------------------------------------------
-
 
 -------------------------------------------------
 
@@ -185,7 +183,20 @@ listen to the user input and store that data in the textarea
 -------------------------------------------------
 
  *** structural directives ***
+ Structural directives are directives which change the DOM layout by adding and removing DOM elements.
+
+Angular provides a set of built-in structural directives (such as NgIf, NgForOf, NgSwitch and others)
+which are commonly used in all Angular projects. 
+
  
+It's a quite common use-case to repeat a block of HTML but only when a particular condition is true. 
+An intuitive way to do that is to put both an *ngFor and an *ngIf on the same element. 
+However, since both *ngFor and *ngIf are structural directives
+
+
+
+
+-------------------------------------------------
 
 
 
@@ -193,15 +204,77 @@ listen to the user input and store that data in the textarea
 
 -------------------------------------------------
 
--------------------------------------------------
+
 
 -------------------------------------------------
 
--------------------------------------------------
+
 
 -------------------------------------------------
 
+
+
+
 -------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
+
+-------------------------------------------------
+
+
+
+-------------------------------------------------
+
+
+
 
 -------------------------------------------------
 
