@@ -111,24 +111,42 @@ and convert to a data object that we can use, then readds it on a special proper
 
 
 -----------------------------------------------------------------
+    Mongo DB
 
+    NoSQL database --> store "Documents" in "Collections"
+    (instead of "Records" in "Tables" as in SQL)
+
+    No Data Schema or Relations
+
+-----------------------------------------------------------------
+    Comparing NoSQL vs SQL:
+
+    NoSQL:
+        No Data Schema
+        less focus on relations 
+        independent document 
+        fast query -- less relations so no complex query
+        no joints
+        Great for: Logs, Orders, Chat Messages
+
+
+    SQL: 
+        strict Data Schema
+        relations are a core feature 
+        Records are related
+        Great for: Shopping Carts, Contacts, Networks
 
 
 
 -----------------------------------------------------------------
 
+        mongoose --> 
+        connect with MongoDB server, interact with it, store and fetch data(posts)
 
+    a third party package which builds up on the official MongoDB driver
+    it make accessing MongoDB much easier and convenient
 
-
-
-
-
------------------------------------------------------------------
-
-
-
-
-
+    mongoose does something that MongoDB does not really use --> schema
 
 
 
