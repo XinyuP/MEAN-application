@@ -83,6 +83,21 @@ you create a server with Node.js too
 
 
 
+---------------------------------------------------------------
+        CORS
+
+    cross origin resource sharing 
+
+    we have seperated server and client 
+                        3000     4200
+
+    We want to expose our server API to all possible clients
+    and natrually, they will not run on our server
+
+    --> we need to disable the default mechanism 
+
+    --> Set the right headers on the server side response --> in the backend app.js, add one additional middleware
+
 
 
 

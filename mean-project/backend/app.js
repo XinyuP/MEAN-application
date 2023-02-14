@@ -4,6 +4,25 @@ const express = require("express");
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); /// allow which domain are able to access our resources
+  // this means no matter which domain the app which is sending the request is running on,
+  // it is allowed to access our resources
+
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  // restricted to domains sending requests with a certain set of headers besides the default headers
+  // if the incoming request has another non default headers except the headers we specified here, it will be blocked
+
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET,POST,PATCH,DELETE,OPTIONS"
+  ); // control which http words maybe used to send requests
+
+  next(); // because request should be able to continue to the next middleware
+}); // no path or filter added because I wanna do this for all incoming requests
 
 app.use("/api/posts", (req, res, next) => {
   // adding api is optional, just to make it clear
