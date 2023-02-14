@@ -129,10 +129,74 @@ highly engaging UI
 
 
 
+----------------------------------------------
+angular thinks in component
+Essentially, you compose an entire page of these components.
+You build it with these components,
+because the advantage of this is that:
+    you have small, easily to maintain,
+    and manage building blocks for your ui,
+    which you can even reuse,
+
+because some components appear more than once on a page.
 
 
 
 
+-------------------------------------------------
+event binding is an Angular feature
+
+which allows us to listen to event in a declarative way 
+--> instead of using javascript, 
+in html (click)
+-------------------------------------------------
+string interpolation
+{{}}
+
+inside we refer to something which is stored inside of the component belonging to the template
+it can be a method
+it also can be a property name
+
+
+-------------------------------------------------
+
+HTML elements in the dominant JS are just JavaScript Objects with
+a couple of properties, so variables belonging to the Objects
+which we can read and write
+
+
+-------------------------------------------------
+
+
+-------------------------------------------------
+
+<textarea rows="6" [value]="newPost" #postInput></textarea>
+
+-------------------------------------------------
+two way binding feature 
+
+
+<textarea rows="6" [(ngModel)]></textarea>
+directive 
+listen to the user input and store that data in the textarea
+
+
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
+
+-------------------------------------------------
 
 
 
