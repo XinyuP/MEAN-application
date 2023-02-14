@@ -1,5 +1,5 @@
 import { keyframes } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 // decorator
 @Component({
@@ -8,11 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-create.component.css'],
 })
 export class PostCreateComponent {
-  enteredValue = '';
-  newPost = 'No';
+  enteredTitle = '';
+  enteredContent = '';
+  @Output() postCreated = new EventEmitter();
+  // this decorator turns this into an event to which we can listen to
+  // from the outside(in the parent componnet)
+
 
   onAddPost() {
-    this.newPost = this.enteredValue;
+    // this.newPost = this.enteredContent;
+    const post = {
+      title: this.enteredTitle,
+      content: this.enteredContent,
+    };
+    this.postCreated.emit(post);
   }
 }
 
