@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Post } from '../post.model';
+// import { Post } from '../post.model';
+import { PostsService } from '../posts.service';
 
 // decorator
 @Component({
@@ -11,20 +12,23 @@ import { Post } from '../post.model';
 export class PostCreateComponent {
   enteredTitle = '';
   enteredContent = '';
-  @Output() postCreated = new EventEmitter<Post>(); // EventEmitter is a so-called generic type
+  // @Output()
+  // postCreated = new EventEmitter<Post>(); // EventEmitter is a so-called generic type
   // this decorator turns this into an event to which we can listen to
   // from the outside(in the parent componnet)
+
+  constructor(public postsService: PostsService) {}
 
   onAddPost(form: NgForm) {
     // this.newPost = this.enteredContent;
     if (form.invalid) {
       return;
     }
-    const post: Post = {
-      title: form.value.title,
-      content: form.value.content,
-    };
-    this.postCreated.emit(post);
+    // const post: Post = {
+    //   title: form.value.title,
+    //   content: form.value.content,
+    // };
+    this.postsService.addPost(form.value.title, form.value.content);
   }
 }
 
