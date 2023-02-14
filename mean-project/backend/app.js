@@ -9,8 +9,8 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://blaire:vP32L7b5EXgW4aFv@cluster0.an7f9qe.mongodb.net/?retryWrites=true&w=majority"
-  )
+    "mongodb+srv://blaire:vP32L7b5EXgW4aFv@cluster0.an7f9qe.mongodb.net/node-angular?retryWrites=true&w=majority"
+  )  // mongoose auto make create the node-angular databse the first time we write to it
   .then(() => {
     console.log("Connected to database!");
   })
@@ -48,6 +48,11 @@ app.post("/api/posts", (req, res, next) => {
     content: req.body.content,
   });
   console.log(post);
+
+  post.save(); // create a new post entry or document (the name of the collection will be the plural form of the model name 'Post' -> posts)
+  // save(): mongoose behind the scene automatically creates the right query for our database to insert a new entry
+  // with that data and the automatically generated id into the database
+
   res.status(201).json({
     message: "Post added successfully",
   });
