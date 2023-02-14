@@ -251,6 +251,25 @@ Observer
     error()
     complete()
 
+Observables are functions that throw values. Objects called observers subscribe to these values. 
+Observables create a pub-sub system based on the observable design pattern. 
+This makes observables popular with async programming in modern JavaScript frameworks like Angular 
+and libraries like React.
+
+Unlike Promises, observables are not yet inherent to JavaScript. 
+This is why Angular and React rely on the RxJS library for implementing observables. 
+RxJs stands for "Reactive Extension for JavaScript". 
+The RxJS library defines its own Observable class along with supporting methods for Reactive programming.
+
+What are Observables?
+Observables represent a progressive way of handling events, async activity, and multiple values in JavaScript. 
+Observables are really just functions that throw values. Objects called observers define callback functions for next(), error(), and complete(). These observer objects are then passed as arguments to the observable function. The observable function calls the observer methods based on a certain behavior (AJAX HTTP request, event, etc). This allows the observer to "listen" for state changes emitted by the observable function.
+
+Why Observables?
+Observables have surfaced through an evolution of handling async activity in JavaScript. 
+While the Promise API has largely replaced the world of nested callbacks, 
+observables demonstrate the next step forward in gracefully handling async activity and real-time events. 
+
 
 
 -------------------------------------------------

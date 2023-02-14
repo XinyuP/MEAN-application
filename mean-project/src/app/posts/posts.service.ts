@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post.model';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { response } from 'express';
 
 @Injectable({ providedIn: 'root' })
@@ -13,11 +15,22 @@ export class PostsService {
 
   getPosts() {
     this.http
-      .get<{ message: string; posts: Post[] }>(
-        'http://localhost:3000/api/posts'
+      .get<{ message: string; posts: any }>('http://localhost:3000/api/posts')
+      .pipe(
+        map((postData) => {
+          // postData: every data that make it through this observable stream
+          return postData.posts.map((post) => {
+            // automatically be wrapped into an observable by rxjs
+            return {
+              title: post.title,
+              content: post.content,
+              id: post._id,
+            };
+          });
+        })
       )
-      .subscribe((postData) => {
-        this.posts = postData.posts;
+      .subscribe(transformedPosts => {
+        this.posts = transformedPosts;
         // no need to use copy --> it comes from the server, we won't accidently change it on the server,
         // there is no such connection, it was part of http response
 
