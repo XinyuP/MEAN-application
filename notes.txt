@@ -241,6 +241,16 @@ event driven approach
 
 -------------------------------------------------
 
+Observables:
+
+Observable
+   |
+   | subscribe
+Observer
+    next()
+    error()
+    complete()
+
 
 
 -------------------------------------------------
