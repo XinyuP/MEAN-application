@@ -152,6 +152,36 @@ and convert to a data object that we can use, then readds it on a special proper
 
 -----------------------------------------------------------------
 
+    client-side vs server-side routing
+
+
+Routes in Angular app defined in the app routing module
+vs
+Routes on the backend in app.js file 
+
+They are not connected, they run on different servers
+
+They do different things
+
+
+client-side routing:
+    The Angular router is just a tool that is able to parse the URL of our app, 
+    and then render different things onto the screen through JavaScript
+    -- It is not loading different HTML pages (we only have one HTML pages, the index HTML page),
+    but it's rerendering the content of that page for the different URL we are visiting
+    -->
+    These routes in angular router are only known by Angular (client-side) 
+    which is a JavaScript driven application running in the browser
+    --> This means the server/backend doesn't know these routes
+    ** read url, rerendering the page **
+
+
+
+server-side routing:
+    handling incoming requests, send back something different
+    ** exchange data ** 
+
+
 
 
 

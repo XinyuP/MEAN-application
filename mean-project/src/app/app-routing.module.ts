@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'create', // do not add '/create', just 'create'
     component: PostCreateComponent,
   },
+
+  {
+    path: 'edit/:postId', // ":"means dynamic
+    component: PostCreateComponent,
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)], // inform the angular router module about our new created routes

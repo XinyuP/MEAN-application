@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Post } from '../post.model';
 // import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 
@@ -9,17 +11,47 @@ import { PostsService } from '../posts.service';
   templateUrl: './post-create.component.html',
   styleUrls: ['./post-create.component.css'],
 })
-export class PostCreateComponent {
+export class PostCreateComponent implements OnInit {
   enteredTitle = '';
   enteredContent = '';
+  post: Post;
+  private mode = 'create';
+  private postId: string;
+
   // @Output()
   // postCreated = new EventEmitter<Post>(); // EventEmitter is a so-called generic type
   // this decorator turns this into an event to which we can listen to
   // from the outside(in the parent componnet)
 
-  constructor(public postsService: PostsService) {}
+  constructor(
+    public postsService: PostsService,
+    public route: ActivatedRoute // hold info about the route we are currently on
+  ) {}
 
-  onAddPost(form: NgForm) {
+  /** PostCreateComponent will be loaded for two different paths
+   * we need to handle these different cases
+   * -> we inject something into the component which is loaded through the router -- help us identify route info
+   *
+   * -> when we can extract postId: we are in eidt mode | otherwise: create mode
+   *
+   */
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      // this subscribe returns a paramMapObject
+      if (paramMap.has('postid')) {
+        this.mode = 'edit';
+        this.postId = paramMap.get('postId');
+        this.post = this.postsService.getPost(this.postId);
+      } else {
+        this.mode = 'create';
+        this.postId = null;
+      }
+    });
+    // for all built-in observables, we never need to unsubscribe
+  }
+
+  onSavePost(form: NgForm) {
     // this.newPost = this.enteredContent;
     if (form.invalid) {
       return;
@@ -28,7 +60,16 @@ export class PostCreateComponent {
     //   title: form.value.title,
     //   content: form.value.content,
     // };
-    this.postsService.addPost(form.value.title, form.value.content);
+
+    if (this.mode === 'create') {
+      this.postsService.addPost(form.value.title, form.value.content);
+    } else {
+      this.postsService.updatePost(
+        this.postId,
+        form.value.title,
+        form.value.content
+      );
+    }
     form.resetForm();
   }
 }
