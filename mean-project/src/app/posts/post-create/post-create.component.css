@@ -13,3 +13,9 @@ button {
   margin: 1rem;
   float: right;
 }
+
+
+mat-spinner {
+  margin: auto;
+
+}

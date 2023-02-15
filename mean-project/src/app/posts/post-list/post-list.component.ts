@@ -12,6 +12,7 @@ import { PostsService } from '../posts.service';
 export class PostListComponent implements OnInit, OnDestroy {
   // @Input()
   posts: Post[] = [];
+  isLoading = false;
   private postsSub: Subscription;
 
   // we need to make the posts property bindable from outside via property binding
@@ -25,10 +26,12 @@ export class PostListComponent implements OnInit, OnDestroy {
   constructor(public postsService: PostsService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.postsService.getPosts();
     this.postsSub = this.postsService
       .getPostsUpdatedListener()
       .subscribe((posts: Post[]) => {
+        this.isLoading = false;
         this.posts = posts;
       });
   }

@@ -173,17 +173,23 @@ client-side routing:
     These routes in angular router are only known by Angular (client-side) 
     which is a JavaScript driven application running in the browser
     --> This means the server/backend doesn't know these routes
+    
     ** read url, rerendering the page **
 
 
 
 server-side routing:
     handling incoming requests, send back something different
+
     ** exchange data ** 
 
 
 
 
+
+**** 
+If we host our Angular app on the same server as node app
+--> You much not use routes defined in Angular(eg. /create) in backend too
 
 
 
