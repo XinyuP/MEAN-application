@@ -2,15 +2,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post.model';
 import { Subject } from 'rxjs';
+// RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using
+// observables that makes it easier to compose asynchronous or callback - based code.
+// Every Subject is an Observable and an Observer. You can subscribe to a Subject,
+//and you can call next to feed values as well as error and complete.
+
+
 import { map } from 'rxjs/operators';
 
 import { response } from 'express';
 import { Router } from '@angular/router';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) // Decorator that marks a class as available to be provided and injected as a dependency
+// Marking a class with @Injectable ensures that the compiler will generate the necessary
+// metadata to create the class's dependencies when the class is injected.
+// providedIn: Determines which injectors will provide the injectable.
+// @Injectable class decorators to automatically resolve and inject all the parameters of class constructor
+
 export class PostsService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<Post[]>();
+  // An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers.
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -55,6 +67,9 @@ export class PostsService {
   getPostsUpdatedListener() {
     return this.postsUpdated.asObservable();
   } // it returns an object which we can listen but we cannot emit
+  // Creates a new Observable with this Subject as the source.
+  // You can do this to create custom Observer - side logic of the Subject and conceal it +\
+  // from code that uses the Observable.
 
   getPost(id: string) {
     // return {

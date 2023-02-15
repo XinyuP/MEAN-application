@@ -170,6 +170,9 @@ which we can read and write
 
 <textarea rows="6" [value]="newPost" #postInput></textarea>
 
+One-way and two-way data binding are two of the important ways by which we can exchange data 
+from component to DOM and vice-versa. Data exchange between the component and the view will help
+ us to build dynamic and interactive web applications.
 -------------------------------------------------
  ** two way binding feature **
 
